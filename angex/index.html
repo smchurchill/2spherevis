@@ -7,13 +7,13 @@
 	<body>
 		<div ng-controller="SphereController as sphere">
 			<h1> {{sphere.current.name}} </h1>
-			<h2> {{sphere.current.euler}} </h2>
+			<h2> Euler Number: {{sphere.current.euler}} </h2>
 			<h3>
 				Faces: {{sphere.current.faces}} <br>
 				Edges: {{sphere.current.edges}} <br>
 				Vertices: {{sphere.current.vertices}}
 			</h3>
-			<p> {{sphere.current.description}} </p>
+			<p> Description: {{sphere.current.description}} </p>
 		</div>	
 		<script type="text/javascript" src="/angular/angular.min.js"></script>
 		<script type="text/javascript" src="/js/app.js"></script>

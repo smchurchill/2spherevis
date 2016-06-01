@@ -5,8 +5,17 @@
 		<link rel="stylesheet" type="text/css" href="/bootstrap/bootstrap.min.css" />
 	</head>
 	<body>
+		<div ng-controller="SphereController as sphere">
+			<h1> {{sphere.current.name}} </h1>
+			<h2> {{sphere.current.euler}} </h2>
+			<h3>
+				Faces: {{sphere.current.faces}} <br>
+				Edges: {{sphere.current.edges}} <br>
+				Vertices: {{sphere.current.vertices}}
+			</h3>
+			<p> {{sphere.current.description}} </p>
+		</div>	
 		<script type="text/javascript" src="/angular/angular.min.js"></script>
 		<script type="text/javascript" src="/js/app.js"></script>
-		<p>{{"hello" + " world"}}</p>
 	</body>
 </html>

@@ -9,12 +9,14 @@
 			<li class="list-group-item" ng-repeat="sphere in example.spheres">
 				<h3> 
 					{{sphere.name}}
+				</h3>
+				<p>
 					Euler Number: {{sphere.euler}}
 					Faces: {{sphere.faces}}
 					Edges: {{sphere.edges}}
 					Vertices: {{sphere.vertices}}
-				</h3>
-				<p> Description: {{sphere.description}} </p>
+					Description: {{sphere.description}}
+				</p>
 				<button ng-show="sphere.isExample"> View </button>
 				<button ng-show="sphere.isComputable"> Compute </button>
 			</li>

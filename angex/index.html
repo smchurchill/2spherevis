@@ -4,17 +4,24 @@
 		<title>Angular Example</title>
 		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.min.css" />
 	</head>
-	<body ng-controller="ExampleController as example">
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="sphere in example.spheres">
+	<body class="container" ng-controller="ExampleController as example">
+		<div class="product row" ng-repeat="sphere in example.spheres">
 				<h3> 
 					{{sphere.name}}
 				</h3>
 				<p>
-					Euler Number: {{sphere.euler}}
-					Faces: {{sphere.faces}}
-					Edges: {{sphere.edges}}
-					Vertices: {{sphere.vertices}}
+					Euler Number:
+					<em class="pull-right">{{sphere.euler}}</em>
+					<br>
+					Faces:
+					<em class="pull-right">{{sphere.faces}}</em>
+					<br>
+					Edges:
+					<em class="pull-right">{{sphere.edges}}</em>
+					<br>
+					Vertices:
+					<em class="pull-right">{{sphere.vertices}}</em>
+					<br>
 					Description: {{sphere.description}}
 				</p>
 				<button ng-show="sphere.isExample"> View </button>

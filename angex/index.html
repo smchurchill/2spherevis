@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app="example">
 	<head>
 		<title>Angular Example</title>
-		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap-theme.min.css" />
-
-		
+		<link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="/bootstrap/js/bootstrap.min.js"></script>		
 	</head>
 	<body class="container" ng-controller="ExampleController as example">
-		<div class="product row" ng-repeat="sphere in example.spheres">
+		<div ng-repeat="sphere in example.spheres">
 				<h3> 
 					{{sphere.name}}
 				</h3>
@@ -32,7 +32,5 @@
 		</ul>	
 		<script type="text/javascript" src="/angular/angular.min.js"></script>
 		<script type="text/javascript" src="/js/app.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script src="/bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>

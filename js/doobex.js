@@ -7,8 +7,8 @@ animate();
 function init() {
     container = document.createElement( 'div' );
 	document.body.appendChild( container );
-	camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 100 );
-	camera.position.y = 20;
+	camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 10 );
+	camera.position.y = 5;
 	scene = new THREE.Scene();
 	var light, object, materials;
 	scene.add( new THREE.AmbientLight( 0x404040 ) );

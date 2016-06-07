@@ -22,7 +22,9 @@ var points = [
     new THREE.Vector3(1.154489,0.998308,0.009254)
 ];    
 
-var faces = [
+geometry.vectors.push(points);
+
+var triangles = [
     new THREE.Face3(0,1,2),
     new THREE.Face3(3,1,2),
     new THREE.Face3(0,4,2),
@@ -44,6 +46,8 @@ var faces = [
     new THREE.Face3(10,11,8),
     new THREE.Face3(7,9,8)
 ];
+
+geometry.faces.push(triangles);
 
 var material = new THREE.MeshBasicMaterial({color:0x00ff00});
 var sphere = new THREE.Mesh(geometry, material);

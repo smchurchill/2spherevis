@@ -25,15 +25,15 @@ function init() {
     light.position.set(0,1,0);
     scene.add(light);
     
-    var map = new THREE.TextureLoader();
-    map.load('textures/UV_Grid_Sm.jpg');
-    map.wrapS = THREE.RepeatWrapping;
-    map.wrapT = THREE.RepeatWrapping;
-    map.anisotopy = 16;
+    var texture = new THREE.TextureLoader();
+    texture.load('textures/UV_Grid_Sm.jpg');
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
+    texture.anisotopy = 16;
     
     materials = [
-        new THREE.MeshLambertMaterial({map: map}),
-        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1} )
+        new THREE.MeshLambertMaterial({map: texture}),
+        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1})
     ];
 
     var points = [
@@ -74,7 +74,7 @@ function init() {
         new THREE.Face3(7,9,8)
     ];
     
-    object = THREE.SceneUtils.createMultiMaterialObject( new THREE.ConvexGeometry(points), materials);
+    object = THREE.SceneUtils.createMultiMaterialObject(new THREE.ConvexGeometry(points), materials);
     scene.add(object);
     
     renderer = new THREE.WebGLRenderer({antialias: true});

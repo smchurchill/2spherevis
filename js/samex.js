@@ -1,6 +1,6 @@
-//if(!Detector.webgl) Detector.addGetWebGLMessage();
+if(!Detector.webgl) Detector.addGetWebGLMessage();
 
-var container;
+var container, stats;
 
 var camera, scene, renderer;
 
@@ -12,15 +12,15 @@ function init() {
     container = document.createElement('div');
     document.body.appendChild(container);
     
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.y = 10;
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+    camera.position.y = 400;
     
     scene = new THREE.Scene();
     
     scene.add(new THREE.AmbientLight(0x404040));
     
     var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(0,5,0);
+    light.position.set(0,1,0);
     scene.add(light);
     
     var loader = new THREE.TextureLoader();
@@ -34,23 +34,22 @@ function init() {
         new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1})
     ];
 
-    var geometry = new THREE.Geometry();
-    geometry.vertices.push(
-        new THREE.Vector3(0.736087,1.274940,0.402807),
-        new THREE.Vector3(0.000000,0.000000,-1.526286),
-        new THREE.Vector3(1.472174,0.000000,0.402807),
-        new THREE.Vector3(-1.420338,0.253597,-0.497873),
-        new THREE.Vector3(0.453966,-0.949486,1.105414),
-        new THREE.Vector3(-0.915225,1.115363,-0.497874),
-        new THREE.Vector3(1.083538,0.903080,-0.583045),
-        new THREE.Vector3(-0.326438,-1.379865,-0.564766),
-        new THREE.Vector3(-0.884288,-1.066278,0.640807),
-        new THREE.Vector3(-1.418295,0.492836,0.274045),
-        new THREE.Vector3(0.596459,-1.404884,-0.009311),
-        new THREE.Vector3(1.154489,0.998308,0.009254)
-    );    
+    var points = [
+        new THREE.Vector3(073,127,040),
+        new THREE.Vector3(0,0,-152),
+        new THREE.Vector3(147,0,40),
+        new THREE.Vector3(-142,25,50),
+        new THREE.Vector3(45,95,111),
+        new THREE.Vector3(-92,112,-50),
+        new THREE.Vector3(108,90,-58),
+        new THREE.Vector3(-33,-138,-56),
+        new THREE.Vector3(-88,-107,64),
+        new THREE.Vector3(-142,49,27),
+        new THREE.Vector3(60,-140,-1),
+        new THREE.Vector3(115,100,1)
+    ];    
 
-    geometry.faces.push(
+/*    var faces = [
         new THREE.Face3(0,1,2),
         new THREE.Face3(3,1,2),
         new THREE.Face3(0,4,2),
@@ -71,15 +70,18 @@ function init() {
         new THREE.Face3(7,11,8),
         new THREE.Face3(10,11,8),
         new THREE.Face3(7,9,8)
-    );
+    ];*/
     
-    var object = THREE.SceneUtils.createMultiMaterialObject(geometry, materials);
+    var object = THREE.SceneUtils.createMultiMaterialObject( new THREE.ConvexGeometry(points), materials);
     scene.add(object);
     
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
+    
+    stats = new Stats();
+    container.appendChild(stats.dom);
     
     window.addEventListener('resize', onWindowResize, false);
 }
@@ -90,7 +92,19 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+function animate() {
+    requestAnimationFrame(animate);
+    render();
+    stats.update();
+
+}
+
 function render() {
-    requestAnimationFrame(render);
+    var timer = Date.now()*0.0001;
+    camera.position.x = Math.cos(timer)*800;
+    camera.position.y = Math.sin(timer)*800;
+    
+    camera.lookAt(scene.position);
+    
     renderer.render(scene, camera);
 }

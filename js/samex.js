@@ -21,6 +21,10 @@ geometry.vertices.push(
     new THREE.Vector3(0.736087,y:1.274940,z:0.402807)
 );
 
+geometry.faces.push(
+    new THREE.Face3(0,1,2)
+);
+
 var material = new THREE.MeshBasicMaterial({color:0x00ff00});
 var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);

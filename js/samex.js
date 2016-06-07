@@ -34,7 +34,8 @@ function init() {
         new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1})
     ];
 
-    var points = [
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push(
         new THREE.Vector3(073,127,040),
         new THREE.Vector3(0,0,-152),
         new THREE.Vector3(147,0,40),
@@ -47,9 +48,9 @@ function init() {
         new THREE.Vector3(-142,49,27),
         new THREE.Vector3(60,-140,-1),
         new THREE.Vector3(115,100,1)
-    ];    
-
-/*    var faces = [
+    );
+    
+    geometry.faces.push(
         new THREE.Face3(0,1,2),
         new THREE.Face3(3,1,2),
         new THREE.Face3(0,4,2),
@@ -70,9 +71,9 @@ function init() {
         new THREE.Face3(7,11,8),
         new THREE.Face3(10,11,8),
         new THREE.Face3(7,9,8)
-    ];*/
+    );
     
-    var object = THREE.SceneUtils.createMultiMaterialObject( new THREE.ConvexGeometry(points), materials);
+    var object = THREE.SceneUtils.createMultiMaterialObject( geometry, materials);
     scene.add(object);
     
     renderer = new THREE.WebGLRenderer({antialias: true});

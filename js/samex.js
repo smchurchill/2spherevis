@@ -12,16 +12,14 @@ function init() {
     container = document.createElement('div');
     document.body.appendChild(container);
     
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.y = 10;
     
     scene = new THREE.Scene();
     
-    var light, object, materials;
-    
     scene.add(new THREE.AmbientLight(0x404040));
     
-    light = new THREE.DirectionalLight(0xffffff);
+    var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(0,1,0);
     scene.add(light);
     
@@ -31,7 +29,7 @@ function init() {
     texture.wrapT = THREE.RepeatWrapping;
     texture.anisotopy = 16;
     
-    materials = [
+    var materials = [
         new THREE.MeshLambertMaterial({map: texture}),
         new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1})
     ];
@@ -51,7 +49,7 @@ function init() {
         new THREE.Vector3(1.154489,0.998308,0.009254)
     ];    
 
-    var faces = [
+/*    var faces = [
         new THREE.Face3(0,1,2),
         new THREE.Face3(3,1,2),
         new THREE.Face3(0,4,2),
@@ -72,9 +70,9 @@ function init() {
         new THREE.Face3(7,11,8),
         new THREE.Face3(10,11,8),
         new THREE.Face3(7,9,8)
-    ];
+    ];*/
     
-    object = THREE.SceneUtils.createMultiMaterialObject(new THREE.ConvexGeometry(points), materials);
+    var object = THREE.SceneUtils.createMultiMaterialObject(new THREE.ConvexGeometry(points), materials);
     scene.add(object);
     
     renderer = new THREE.WebGLRenderer({antialias: true});
@@ -104,12 +102,6 @@ function render() {
     camera.position.y = Math.sin(timer)*800;
     
     camera.lookAt(scene.position);
-    
-    for(var i = 0, l = scene.children.length ; i < l ; i++ ) {
-        var object = scene.children[i];
-        object.rotation.x = timer * 5;
-        object.rotation.y = timer * 2.5;
-    }
     
     renderer.render(scene, camera);
 }

@@ -33,7 +33,7 @@ function init() {
     
     materials = [
         new THREE.MeshLambertMaterial({map: map}),
-        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1}
+        new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1} )
     ];
 
     var points = [

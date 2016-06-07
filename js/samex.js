@@ -12,7 +12,7 @@ geometry.vertices.push(
     new THREE.Vector3(0.000000,0.000000,-1.526286),
     new THREE.Vector3(1.472174,0.000000,0.402807),
     new THREE.Vector3(-1.420338,0.253597,-0.497873),
-    new THREE.Vector3(0.453966,y:-0.949486,z:1.105414),
+    new THREE.Vector3(0.453966,-0.949486,1.105414),
     new THREE.Vector3(-0.915225,1.115363,-0.497874),
     new THREE.Vector3(1.083538,0.903080,-0.583045),
     new THREE.Vector3(-0.326438,-1.379865,-0.564766),

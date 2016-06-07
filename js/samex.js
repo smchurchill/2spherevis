@@ -34,7 +34,8 @@ function init() {
         new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1})
     ];
 
-    var points = [
+    var geometry = new THREE.Geometry();
+    geometry.push(
         new THREE.Vector3(0.736087,1.274940,0.402807),
         new THREE.Vector3(0.000000,0.000000,-1.526286),
         new THREE.Vector3(1.472174,0.000000,0.402807),
@@ -47,9 +48,9 @@ function init() {
         new THREE.Vector3(-1.418295,0.492836,0.274045),
         new THREE.Vector3(0.596459,-1.404884,-0.009311),
         new THREE.Vector3(1.154489,0.998308,0.009254)
-    ];    
+    );    
 
-    var faces = [
+    geometry.push(
         new THREE.Face3(0,1,2),
         new THREE.Face3(3,1,2),
         new THREE.Face3(0,4,2),
@@ -70,11 +71,7 @@ function init() {
         new THREE.Face3(7,11,8),
         new THREE.Face3(10,11,8),
         new THREE.Face3(7,9,8)
-    ];
-    
-    var geometry = new THREE.Geometry();
-    geometry.vertices.push(points);
-    geometry.faces.push(faces);
+    );
     
     var object = THREE.SceneUtils.createMultiMaterialObject(geometry, materials);
     scene.add(object);

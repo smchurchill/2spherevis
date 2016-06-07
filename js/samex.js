@@ -25,6 +25,9 @@ var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 camera.position.z = 5;
+camera.lookAt(
+    new THREE.Vector3(0,0,0)
+);
 
 function render() {
     requestAnimationFrame(render);

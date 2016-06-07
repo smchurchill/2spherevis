@@ -23,8 +23,8 @@ function init() {
     light.position.set(0,5,0);
     scene.add(light);
     
-    var texture = new THREE.TextureLoader();
-    texture.load('textures/UV_Grid_Sm.jpg');
+    var loader = new THREE.TextureLoader();
+    var texture = loader.load('textures/UV_Grid_Sm.jpg');
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     texture.anisotopy = 16;

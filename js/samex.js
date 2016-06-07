@@ -73,6 +73,17 @@ function init() {
         new THREE.Face3(7,9,8)
     );
     
+    // Next funciton and for loop directly from ConvexGeometry.js
+	function vertexUv( vertex ) {
+
+		var mag = vertex.length();
+		return new THREE.Vector2(
+		    vertex.x / mag,
+		    vertex.y / mag
+	    );
+
+	}
+    
     for ( var i = 0; i < geometry.faces.length; i ++ ) {
 
 		var face = geometry.faces[ i ];

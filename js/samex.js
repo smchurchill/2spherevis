@@ -26,7 +26,7 @@ function init() {
     scene.add(light);
     
     var map = new THREE.TextureLoader();
-    map.load("/textures/UV_Grid_Sm.jpg");
+    map.load("2spherevis.com/textures/UV_Grid_Sm.jpg");
     map.wrapS = THREE.RepeatWrapping;
     map.wrapT = THREE.RepeatWrapping;
     map.anisotopy = 16;

@@ -35,7 +35,7 @@ function init() {
     ];
 
     var geometry = new THREE.Geometry();
-    geometry.push(
+    geometry.vertices.push(
         new THREE.Vector3(0.736087,1.274940,0.402807),
         new THREE.Vector3(0.000000,0.000000,-1.526286),
         new THREE.Vector3(1.472174,0.000000,0.402807),
@@ -50,7 +50,7 @@ function init() {
         new THREE.Vector3(1.154489,0.998308,0.009254)
     );    
 
-    geometry.push(
+    geometry.faces.push(
         new THREE.Face3(0,1,2),
         new THREE.Face3(3,1,2),
         new THREE.Face3(0,4,2),

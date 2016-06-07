@@ -7,7 +7,7 @@ document.body.appendChild(renderer.domElement);
 
 var geometry = new THREE.Geometry();
 
-var points = [
+geometry.vertices.push(
     new THREE.Vector3(0.736087,1.274940,0.402807),
     new THREE.Vector3(0.000000,0.000000,-1.526286),
     new THREE.Vector3(1.472174,0.000000,0.402807),
@@ -20,11 +20,9 @@ var points = [
     new THREE.Vector3(-1.418295,0.492836,0.274045),
     new THREE.Vector3(0.596459,-1.404884,-0.009311),
     new THREE.Vector3(1.154489,0.998308,0.009254)
-];    
+);    
 
-geometry.vectors.push(points);
-
-var triangles = [
+geometry.faces.push(
     new THREE.Face3(0,1,2),
     new THREE.Face3(3,1,2),
     new THREE.Face3(0,4,2),
@@ -45,18 +43,13 @@ var triangles = [
     new THREE.Face3(7,11,8),
     new THREE.Face3(10,11,8),
     new THREE.Face3(7,9,8)
-];
-
-geometry.faces.push(triangles);
+);
 
 var material = new THREE.MeshBasicMaterial({color:0x00ff00});
 var sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 
 camera.position.z = 5;
-camera.lookAt(
-    new THREE.Vector3(0,0,0)
-);
 
 function render() {
     requestAnimationFrame(render);

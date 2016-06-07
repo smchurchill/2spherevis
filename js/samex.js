@@ -26,13 +26,13 @@ function init() {
     scene.add(light);
     
     var map = new THREE.TextureLoader();
-    map.load("2spherevis.com/textures/UV_Grid_Sm.jpg");
+    map.load("/textures/UV_Grid_Sm.jpg");
     map.wrapS = THREE.RepeatWrapping;
     map.wrapT = THREE.RepeatWrapping;
     map.anisotopy = 16;
     
     materials = [
-        new THREE.MeshLambertMaterial({map:map}),
+        new THREE.MeshLambertMaterial({map: map}),
         new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1}
     ];
 
@@ -100,8 +100,8 @@ function render() {
     
     var timer = Date.now() * 0.0001;
 
-    sphere.rotation.x = Math.cos(timer)*800;
-    sphere.rotation.y = Math.sin(timer)*800;
+    camera.position.x = Math.cos(timer)*800;
+    camera.position.y = Math.sin(timer)*800;
     
     camera.lookAt(scene.position);
     

@@ -5,7 +5,7 @@ var container, stats;
 var camera, scene, renderer;
 
 init();
-render();
+animate();
 
 function init() {
     

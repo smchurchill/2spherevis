@@ -5,22 +5,11 @@ init();
 animate();
 
 function init() {
-    container = document.createElement( 'div' );
-	document.body.appendChild( container );
-	camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 1, 10 );
-	camera.position.y = 5;
-	scene = new THREE.Scene();
-	var light, object, materials;
-	scene.add( new THREE.AmbientLight( 0x404040 ) );
-	light = new THREE.DirectionalLight( 0xffffff );
-	light.position.set( 0, 1, 0 );
-	scene.add( light );
-	map.wrapS = map.wrapT = THREE.RepeatWrapping;
-	map.anisotropy = 16;
-	materials = [
-		new THREE.MeshLambertMaterial( { map: map } ),
-		new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true, transparent: true, opacity: 0.1 } )
-	];
+
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.z = 10;
 
     points = [
         new THREE.Vector3(-0.915225,1.115363,-0.497874),
@@ -37,41 +26,25 @@ function init() {
         new THREE.Vector3(0.736087,y:1.274940,z:0.402807)
     ];
     
-    object = THREE.SceneUtils.createMultiMaterialObject(new THREE.ConvexGeometry(points), materials);
-    object.position.set(0,0,0);
-    scene.add(object);
+    material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
 
-    renderer = new THREE.WebGLRenderer({antialias:true});
-    renderer.setPixelRatio(window.devicePixelRatio);
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
 
-    container.appendChild( renderer.domElement );
+    document.body.appendChild( renderer.domElement );
 
-	stats = new Stats();
-	container.appendChild( stats.dom );
-	//
-	window.addEventListener( 'resize', onWindowResize, false );
-}
-function onWindowResize() {
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-	renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
 function animate() {
-	requestAnimationFrame( animate );
-	render();
-	stats.update();
-}
-function render() {
-	var timer = Date.now() * 0.0001;
-	camera.position.x = Math.cos( timer ) * 800;
-	camera.position.z = Math.sin( timer ) * 800;
-	camera.lookAt( scene.position );
-	for ( var i = 0, l = scene.children.length; i < l; i ++ ) {
-		var object = scene.children[ i ];
-		object.rotation.x = timer * 5;
-		object.rotation.y = timer * 2.5;
-	}
-	renderer.render( scene, camera );
+
+    requestAnimationFrame( animate );
+
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+
 }

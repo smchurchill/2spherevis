@@ -73,8 +73,22 @@ function init() {
         new THREE.Face3(7,9,8)
     );
     
+    for ( var i = 0; i < geometry.faces.length; i ++ ) {
+
+		var face = geometry.faces[ i ];
+
+		geometry.faceVertexUvs[ 0 ].push( [
+			vertexUv( geometry.vertices[ face.a ] ),
+			vertexUv( geometry.vertices[ face.b ] ),
+			vertexUv( geometry.vertices[ face.c ] )
+		] );
+
+	}
+    
     geometry.computeFaceNormals();
     geometry.computeVertexNormals();
+
+    
     
     var object = THREE.SceneUtils.createMultiMaterialObject( geometry, materials);
     scene.add(object);

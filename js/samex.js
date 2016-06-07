@@ -20,7 +20,7 @@ function init() {
     scene.add(new THREE.AmbientLight(0x404040));
     
     var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(0,1,0);
+    light.position.set(0,5,0);
     scene.add(light);
     
     var texture = new THREE.TextureLoader();

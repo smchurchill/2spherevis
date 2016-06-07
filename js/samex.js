@@ -94,6 +94,6 @@ function onWindowResize() {
 }
 
 function render() {
-    requestAnimationFrame(animate);
+    requestAnimationFrame(render);
     renderer.render(scene, camera);
 }

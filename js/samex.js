@@ -5,7 +5,7 @@ var container;
 var camera, scene, renderer;
 
 init();
-animate();
+render();
 
 function init() {
     
@@ -93,12 +93,7 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate() {
-    requestAnimationFrame(animate);
-    render();
-}
-
 function render() {
-    
+    requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }

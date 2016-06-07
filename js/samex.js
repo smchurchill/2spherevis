@@ -73,6 +73,9 @@ function init() {
         new THREE.Face3(7,9,8)
     );
     
+    geometry.computeFaceNormals();
+    geometry.computeVertexNormals();
+    
     var object = THREE.SceneUtils.createMultiMaterialObject( geometry, materials);
     scene.add(object);
     

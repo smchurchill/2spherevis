@@ -98,5 +98,5 @@ function render() {
         object.rotation.y = timer * 2.5;
     }
     
-    renderer.render();
+    renderer.render(scene, camera);
 }

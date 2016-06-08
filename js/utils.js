@@ -40,7 +40,7 @@ function greatCircleFunction(P,Q) {
 
 function createSphereArc(P,Q) {
     var sphereArc = new THREE.Curve();
-    sphereArc.getPoint = geratCircleFunction(P,Q);
+    sphereArc.getPoint = greatCircleFunction(P,Q);
     return sphereArc;
 }
 

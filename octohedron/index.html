@@ -70,7 +70,7 @@
                     new THREE.Face3(3,4,5)
                 );
                 
-                // Next funciton and for loop directly from ConvexGeometry.js
+                // Next function and for loop directly from ConvexGeometry.js
 	            function vertexUv( vertex ) {
 
 		            var mag = vertex.length();
@@ -85,7 +85,7 @@
 
 		            var face = geometry.faces[ i ];
 
-		            geometry.faceVertexUvs[ i ].push( [
+		            geometry.faceVertexUvs[ 0 ].push( [
 			            vertexUv( geometry.vertices[ face.a ] ),
 			            vertexUv( geometry.vertices[ face.b ] ),
 			            vertexUv( geometry.vertices[ face.c ] )
@@ -132,6 +132,10 @@
                 
                 camera.lookAt(scene.position);
                 
+			    var object = scene.children[ 0 ];
+			    object.rotation.x = timer * 5;
+			    object.rotation.y = timer * 2.5;
+            
                 renderer.render(scene, camera);
             }
         </script>

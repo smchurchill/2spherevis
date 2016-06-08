@@ -79,26 +79,23 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate(rotate=true) {
+function animate() {
     requestAnimationFrame(animate);
-    render(rotate);
+    render();
     stats.update();
 }
 
-function render(rotate=true) {
-
-    if(rotate) {
-        var timer = Date.now()*0.0001;
-        camera.position.x = Math.cos(timer)*800;
-        camera.position.y = Math.sin(timer)*800;
-        
-        camera.lookAt(scene.position);
-        
-        for(var i = 0, l = scene.children.length; i < l; i++ ){
-            var object = scene.children[ 0 ];
-            object.rotation.x = timer * 5;
-            object.rotation.y = timer * 2.5;
-        }
+function render() {
+    var timer = Date.now()*0.0001;
+    camera.position.x = Math.cos(timer)*800;
+    camera.position.y = Math.sin(timer)*800;
+    
+    camera.lookAt(scene.position);
+    
+    for(var i = 0, l = scene.children.length; i < l; i++ ){
+        var object = scene.children[ 0 ];
+        object.rotation.x = timer * 5;
+        object.rotation.y = timer * 2.5;
     }
     
     renderer.render();

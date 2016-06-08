@@ -35,7 +35,6 @@ function greatCircleFunction(P,Q) {
             Q.clone().multipleScaler(Math.sin(    t*angle)))
             .divideScalar(Math.sin(angle));
         return X;        
-        );
     };
 }
 

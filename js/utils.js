@@ -48,7 +48,7 @@ function drawCurve(curve, color) {
     var lineGeometry = new THREE.Geometry();
     lineGeometry.vertices = curve.getPoints(100);
     lineGeometry.computeLineDistances;
-    var lineMaterial = new THREE.LineBAsicMaterial();
+    var lineMaterial = new THREE.LineBasicMaterial();
     lineMaterial.color = color;
     var line = new THREE.Line(lineGeometry,lineMaterial);
     scene.add(line);

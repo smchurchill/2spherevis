@@ -76,13 +76,13 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-function animate(scene, camera, rotate=true) {
+function animate(rotate=true) {
     requestAnimationFrame(animate);
-    render(scene, camera, rotate);
+    render(rotate);
     stats.update();
 }
 
-function render(scene, camera, rotate=true) {
+function render(rotate=true) {
 
     if(rotate) {
         var timer = Date.now()*0.0001;
@@ -91,7 +91,7 @@ function render(scene, camera, rotate=true) {
         
         camera.lookAt(scene.position);
         
-        for(var i = 0, l = scene.children.length; i < l; is++ ){
+        for(var i = 0, l = scene.children.length; i < l; i++ ){
             var object = scene.children[ 0 ];
             object.rotation.x = timer * 5;
             object.rotation.y = timer * 2.5;

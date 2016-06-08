@@ -46,7 +46,7 @@ function addTexturedGeometry(file, geometry, scene) {
     scene.add(object);
 }
 
-function init(container, stats, scene, camera, renderer) {
+function init(scene, camera) {
     
     var container = document.createElement('div');
     document.body.appendChild(container);

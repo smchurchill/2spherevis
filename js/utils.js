@@ -8,8 +8,8 @@ function geometryFromJSON(json) {
 
 function generateGeometry(vertices, faces) {
     var geometry = new THREE.Geometry();
-    geometry.vertices.push(vertices);
-    geometry.faces.push(faces);
+    geometry.vertices = geometry.vertices.concat(vertices);
+    geometry.faces = geometry.faces.concat(faces);
     
     // faceVertexUV methods from ConvexGeometry.js example
     function vertexUv( vertex ) {

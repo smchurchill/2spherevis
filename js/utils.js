@@ -19,8 +19,8 @@ function generateSphere(vertices, edges, radius) {
     }
     
     for( var i = 0 ; i < edges.length ; i++ ) {
-        var P = projectOntoMesh(vertices(edges[i][0]), sphere);
-        var Q = projectOntoMesh(vertices(edges[i][1]), sphere);
+        var P = projectOntoMesh(vertices[edges[i][0]], sphere);
+        var Q = projectOntoMesh(vertices[edges[i][1]], sphere);
         drawCurve(createSphereArc(P,Q), new THREE.color(0xffff00));        
     }
     

@@ -158,7 +158,7 @@ function init() {
     container.appendChild( stats.domElement );
     
     //LIGHT
-    var light = THREE.PointLight(0xffffff);
+    var light = new THREE.PointLight(0xffffff);
     light.position.set(100,250,100);
     scene.add(light);
     

@@ -21,7 +21,7 @@ function generateSphere(vertices, edges, radius) {
     for( var i = 0 ; i < edges.length ; i++ ) {
         var P = projectOntoMesh(vertices[edges[i][0]], sphere);
         var Q = projectOntoMesh(vertices[edges[i][1]], sphere);
-        drawCurve(createSphereArc(P,Q), new THREE.color(0xffff00));        
+        drawCurve(createSphereArc(P,Q), new THREE.Color(0xffff00));        
     }
     
     sphere.scale.multiplyScalar(0.99);

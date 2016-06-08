@@ -17,11 +17,9 @@
 		    if(!Detector.webgl) Detector.addGetWebGLMessage();
 		    
 		    var scene, camera;
+		    var container, stats, renderer;
 		    
-		    scene = new THREE.Scene();
-	        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-
-            init(scene, camera);
+            init();
         
             vertices = [
                 new THREE.Vector3(0, 0, -155),
@@ -46,10 +44,9 @@
             addTexturedGeometry(
                 '/textures/UV_Grid_Sm.jpg',    
                 generateGeometry(vertices, faces),
-                scene
             );
                         
-            animate(scene, camera, true);
+            animate();
 
 
         </script>

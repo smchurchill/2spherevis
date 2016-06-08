@@ -30,7 +30,7 @@ function generateGeometry(vertices, faces) {
     return geometry;
 }
 
-function addTexturedGeometry(file, geometry, scene) {
+function addTexturedGeometry(file, geometry) {
 
     var texture = new THREE.TextureLoader().load(file);
     texture.wrapS = THREE.RepeatWrapping;
@@ -46,25 +46,28 @@ function addTexturedGeometry(file, geometry, scene) {
     scene.add(object);
 }
 
-function init(scene, camera) {
-    
-    var container = document.createElement('div');
-    document.body.appendChild(container);
-    
+function init() {
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
     camera.position.y = 400;
-                     
-    scene.add(new THREE.AmbientLight(0x404040));
     
+    container = document.createElement('div');
+    document.body.appendChild(container);
+                         
+    scene.add(new THREE.AmbientLight(0x404040));
+
+    light = new THREE.DirectionalLight(0xffffff);
     var light = new THREE.DirectionalLight(0xffffff);
     light.position.set(0,1,0);
     scene.add(light);
 
-    var renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
     
-    var stats = new Stats();
+    stats = new Stats();
     container.appendChild(stats.dom);
     
     window.addEventListener('resize', onWindowResize, false);
@@ -98,5 +101,5 @@ function render(rotate=true) {
         }
     }
     
-    renderer.render(scene, camera);
+    renderer.render();
 }

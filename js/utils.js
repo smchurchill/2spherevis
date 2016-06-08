@@ -93,7 +93,7 @@ function render(scene, camera, rotate=true) {
         
         camera.lookAt(scene.position);
         
-        for(int i = 0, l = scene.children.length; i < l; is++ ){
+        for(var i = 0, l = scene.children.length; i < l; is++ ){
             var object = scene.children[ 0 ];
             object.rotation.x = timer * 5;
             object.rotation.y = timer * 2.5;

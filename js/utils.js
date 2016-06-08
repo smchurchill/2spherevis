@@ -32,7 +32,7 @@ function greatCircleFunction(P,Q) {
     return function(t) {
         var X = new THREE.Vector3().addVectors(
             P.clone().multiplyScalar(Math.sin((1-t)*angle)),
-            Q.clone().multiplyScaler(Math.sin(    t*angle)))
+            Q.clone().multiplyScalar(Math.sin(    t*angle)))
             .divideScalar(Math.sin(angle));
         return X;        
     };

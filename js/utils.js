@@ -6,6 +6,84 @@ function geometryFromJSON(json) {
 
 }
 
+function generateSphere(vertices, edges, radius) {
+    var baseSphere = new THREE.SphereGeometry( radius, 32, 32 );
+    var baseMaterial = new THREE.MeshLambertMaterial( {color: 0x888888} );
+    this.sphere = new THREE.Mesh(baseSphere, baseMaterial);
+    scene.add(sphere);
+    
+    for( var i = 0 ; i < vertices.length ; i++ ) {
+        var origin = vertices[i].clone();
+        var proj = projectOntoMesh(origin, sphere);
+        drawLine(origin, proj, new THREE.Color(0xffcc00), true);
+    }
+    
+    for( var i = 0 ; i < edges.length ; i++ ) {
+        var P = projectOntoMesh(edges[i][0], sphere);
+        var Q = projectOntoMesh(edges[i][1], sphere);
+        drawCurve(createSphereArc(P,Q), new THREE.color(0xffff00));        
+    }
+    
+    sphere.scale.multiplyScalar(0.99);
+}
+
+function greatCircleFunction(P,Q) {
+    var angle = P.angleTo(Q);
+    return function(t) {
+        var X = new THREE.Vector3().addVectors(
+            P.clone().multiplyScalar(Math.sin((1-t)*angle)),
+            Q.clone().multipleScaler(Math.sin(    t*angle)))
+            .divideScalar(Math.sin(angle));
+        return X;        
+        );
+    };
+}
+
+function createSphereArc(P,Q) {
+    var sphereArc = new THREE.Curve();
+    sphereArc.getPoint = geratCircleFunction(P,Q);
+    return sphereArc;
+}
+
+function drawCurve(curve, color) {
+    var lineGeometry = new THREE.Geometry();
+    lineGeometry.vertices = curve.getPoints(100);
+    lineGeometry.computeLineDistances;
+    var lineMaterial = new THREE.LineBAsicMaterial();
+    lineMaterial.color = color;
+    var line = new THREE.Line(lineGeometry,lineMaterial);
+    scene.add(line);
+
+}
+
+function drawLine(P,Q,color,dashed) {
+    var lineGeometry = new THREE.Geometry();
+    lineGeometry.vertices.push(P,Q);
+    lineGeometry.computeLineDistances();
+    if( dashed === undefined || !dashed )
+        var lineMaterial = new THREE.LineBasicMaterial();
+    else // dashed == true
+        var lineMaterial = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
+    var line = new THREE.Line(lineGeometry, lineMaterial);
+    scene.add(line);
+
+}
+
+function projectOntoMesh(point, mesh) {
+    var origin = point.clone();
+    var direction = point.clone().multiplyScalar(-1);
+    var ray = new THREE.Raycaster(origin, direction.normalize());
+    var intersection = ray.intersectObject(mesh);
+    if(intersection.length > 0)
+        return intersection[0].point;
+    else
+        return null;
+}
+
+
+
+
+
 function generateGeometry(vertices, faces) {
     var geometry = new THREE.Geometry();
     geometry.vertices = geometry.vertices.concat(vertices);
@@ -47,30 +125,48 @@ function addTexturedGeometry(file, geometry) {
 }
 
 function init() {
+    //SCENE
     scene = new THREE.Scene();
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-    camera.position.y = 400;
+    //CAMERA
+    var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
+    var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
+    camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+    scene.add(camera);
+    camera.position.set(0,150,400);
+    camera.lookAt(scene.position);
     
-    container = document.createElement('div');
-    document.body.appendChild(container);
-                         
-    scene.add(new THREE.AmbientLight(0x404040));
-
-    light = new THREE.DirectionalLight(0xffffff);
-    var light = new THREE.DirectionalLight(0xffffff);
-    light.position.set(0,1,0);
-    scene.add(light);
-
-    renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    //RENDERER
+    if(Detector.webgl)
+        renderer = new THREE.WebGLRenderer({antialias: true});
+    else
+        renderer = new THREE.CanvasRenderer();
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    container = document.getElementById('ThreeJS');
     container.appendChild(renderer.domElement);
     
-    stats = new Stats();
-    container.appendChild(stats.dom);
-    
+    //EVENTS
     window.addEventListener('resize', onWindowResize, false);
+    
+    //CONTROLS
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    
+    //STATS
+    stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.bottom = '0px';
+    stats.domElement.style.zIndex = 100;
+    container.appendChild( stats.domElement );
+    
+    //LIGHT
+    var light = THREE.PointLight(0xffffff);
+    light.position.set(100,250,100);
+    scene.add(light);
+    
+    var skyBoxGeometry = new THREE.CubeGeometry(1000,1000,1000);
+    var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x6666cc, side: THREE.BackSide } );
+    var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+    scene.add(skyBox);
 }
 
 function onWindowResize() {
@@ -86,6 +182,7 @@ function animate() {
 }
 
 function render() {
+    /*
     var timer = Date.now()*0.0001;
     camera.position.x = Math.cos(timer)*800;
     camera.position.y = Math.sin(timer)*800;
@@ -97,6 +194,8 @@ function render() {
         object.rotation.x = timer * 5;
         object.rotation.y = timer * 2.5;
     }
-    
+    */
     renderer.render(scene, camera);
 }
+
+

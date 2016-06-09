@@ -1,8 +1,28 @@
-function geometryFromJSON(json) {
-    // parse JSON
-    vertices = [];
-    faces = [];
-    return generateGeometry(vertices, faces);
+function populate() {
+    
+    if( json.status == 'good' ) {    
+        
+        radius = json.radius * 0.8;
+    
+        for( i = 0 ; i < json.vertices.length ; i++ ) {
+            for(vertex in json.vertices) {
+                if(vertex.index == i) {
+                    vertices.push(new THREE.Vertex3(vertex.x,vertex.y,vertex.z));
+                }
+            }
+        }
+        
+        for( edge in json.edges) {
+            edges.push([edge.u,edge.v]);
+        }
+        
+        for( triangle in json.triangles ) {
+            if(triangle.orientation < 0)
+                faces.push(new THREE.Face3(triangle.a,triangle.b,triangle.c)); 
+            else
+                faces.push(new THREE.Face3(triangle.c,triangle.b,triangle.a)); 
+        }
+    }
 
 }
 

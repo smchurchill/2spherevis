@@ -5,7 +5,9 @@ function populate() {
         radius = json.radius * 0.8;
     
         for( i = 0 ; i < json.vertices.length ; i++ ) {
+            console.log(i);
             for(vertex in json.vertices) {
+                console.log(vertex);
                 if(vertex.index == i) {
                     vertices.push(new THREE.Vertex3(vertex.x,vertex.y,vertex.z));
                 }
@@ -13,6 +15,7 @@ function populate() {
         }
         
         for( edge in json.edges) {
+            console.log(edge);
             edges.push([edge.u,edge.v]);
         }
         

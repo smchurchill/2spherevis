@@ -23,6 +23,11 @@ function populate() {
                 faces.push(new THREE.Face3(triangle.c,triangle.b,triangle.a)); 
         }
     }
+    
+    console.log(vertices);
+    console.log(edges);
+    console.log(faces);
+    
 
 }
 

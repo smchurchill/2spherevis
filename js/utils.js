@@ -8,22 +8,31 @@ function populate() {
             console.log(i);
             for(vertex in json.vertices) {
                 console.log(vertex);
-                if(vertex.index == i) {
-                    vertices.push(new THREE.Vertex3(vertex.x,vertex.y,vertex.z));
+                if(json.vertices[vertex].index == i) {
+                    vertices.push(new THREE.Vertex3(
+                        json.vertices[vertex].x,
+                        json.vertices[vertex].y,
+                        json.vertices[vertex].z));
                 }
             }
         }
         
         for( edge in json.edges) {
             console.log(edge);
-            edges.push([edge.u,edge.v]);
+            edges.push([json.edges[edge].u,json.edges[edge].v]);
         }
         
         for( triangle in json.triangles ) {
             if(triangle.orientation < 0)
-                faces.push(new THREE.Face3(triangle.a,triangle.b,triangle.c)); 
+                faces.push(new THREE.Face3(
+                    json.triangles[triangle].a,
+                    json.triangles[triangle].b,
+                    json.triangles[triangle].c)); 
             else
-                faces.push(new THREE.Face3(triangle.c,triangle.b,triangle.a)); 
+                faces.push(new THREE.Face3(
+                    json.triangles[triangle].c,
+                    json.triangles[triangle].b,
+                    json.triangles[triangle].a)); 
         }
     }
     

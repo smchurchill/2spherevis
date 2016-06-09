@@ -7,6 +7,9 @@ function geometryFromJSON(json) {
 }
 
 function generateSphere(vertices, edges, radius) {
+
+    scene.add(new THREE.AxisHelper(r*1.5));
+
     var baseSphere = new THREE.SphereGeometry( radius, 32, 32 );
     var baseMaterial = new THREE.MeshLambertMaterial( {color: 0x888888} );
     this.sphere = new THREE.Mesh(baseSphere, baseMaterial);

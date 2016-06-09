@@ -9,7 +9,7 @@ function populate() {
             for(vertex in json.vertices) {
                 console.log(vertex);
                 if(json.vertices[vertex].index == i) {
-                    vertices.push(new THREE.Vertex3(
+                    vertices.push(new THREE.Vector3(
                         json.vertices[vertex].x,
                         json.vertices[vertex].y,
                         json.vertices[vertex].z));

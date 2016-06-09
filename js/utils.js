@@ -3,22 +3,19 @@ function populate() {
     if( json.status == 'good' ) {    
         
         radius = json.radius * 0.8;
-    
+
         for( i = 0 ; i < json.vertices.length ; i++ ) {
-            console.log(i);
             for(vertex in json.vertices) {
-                console.log(vertex);
                 if(json.vertices[vertex].index == i) {
                     vertices.push(new THREE.Vector3(
-                        json.vertices[vertex].x,
-                        json.vertices[vertex].y,
-                        json.vertices[vertex].z));
+                        Math.round(json.vertices[vertex].x),
+                        Math.round(json.vertices[vertex].y),
+                        Math.round(json.vertices[vertex].z)));
                 }
             }
         }
         
         for( edge in json.edges) {
-            console.log(edge);
             edges.push([json.edges[edge].u,json.edges[edge].v]);
         }
         
@@ -35,12 +32,6 @@ function populate() {
                     json.triangles[triangle].a)); 
         }
     }
-    
-    console.log(vertices);
-    console.log(edges);
-    console.log(faces);
-    
-
 }
 
 function generateSphere(vertices, edges, radius) {

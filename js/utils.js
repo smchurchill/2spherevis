@@ -8,9 +8,9 @@ function populate() {
             for(vertex in json.vertices) {
                 if(json.vertices[vertex].index == i) {
                     vertices.push(new THREE.Vector3(
-                        Math.round(json.vertices[vertex].x),
-                        Math.round(json.vertices[vertex].y),
-                        Math.round(json.vertices[vertex].z)));
+                        json.vertices[vertex].x,
+                        json.vertices[vertex].y,
+                        json.vertices[vertex].z));
                 }
             }
         }
@@ -163,7 +163,7 @@ function init() {
     var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
     camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
     scene.add(camera);
-    camera.position.set(0,150,400);
+    camera.position.set(0,150,2*radius);
     camera.lookAt(scene.position);
     
     //RENDERER

@@ -103,8 +103,8 @@ function drawLine(P,Q,color,dashed) {
 
 function projectOntoMesh(point, mesh) {
     var origin = point.clone();
-    var direction = point.clone().multiplyScalar(-1);
-    var ray = new THREE.Raycaster(origin, direction.normalize());
+    var direction = point.clone().multiplyScalar(-1).normalize();
+    var ray = new THREE.Raycaster(origin, direction);
     var intersection = ray.intersectObject(mesh);
     if(intersection.length > 0)
         return intersection[0].point;

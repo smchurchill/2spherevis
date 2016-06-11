@@ -109,9 +109,21 @@ function projectOntoMesh(point, mesh) {
     if(intersection.length > 0)
         return intersection[0].point;
     else
-        return null;
+        return projectOntoMesh(wiggle(point), mesh);
 }
 
+function wiggle(point) {
+    
+    point.set(
+        point.x + Math.Random(),
+        point.y + Math.Random(),
+        point.z + Math.Random()    
+    );
+    
+    console.log(point);
+
+    return point;
+}
 
 
 

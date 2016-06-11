@@ -115,9 +115,9 @@ function projectOntoMesh(point, mesh) {
 function wiggle(point) {
     
     point.set(
-        point.x + Math.Random(),
-        point.y + Math.Random(),
-        point.z + Math.Random()    
+        point.x + Math.random(),
+        point.y + Math.random(),
+        point.z + Math.random()    
     );
     
     console.log(point);

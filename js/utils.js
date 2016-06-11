@@ -31,6 +31,8 @@ function populate() {
                     json.triangles[triangle].b,
                     json.triangles[triangle].a)); 
         }
+    } else {
+        console.log(json.reason);
     }
 }
 

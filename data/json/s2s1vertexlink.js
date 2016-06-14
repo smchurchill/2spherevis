@@ -1,34 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Samex</title>
-
-		<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">		
-		<link rel="stylesheet" type="text/css" href="/css/samex.css" />
-	</head>
-	<body>
-		<script src="/js/three.js"></script>
-		<script src="/js/geometries/ConvexGeometry.js"></script>
-		<script src="/js/Detector.js"></script>
-		<script src="/js/libs/stats.min.js"></script>
-		<script src="/js/OrbitControls.js"></script>
-		<script src="/js/utils.js"></script>
-		
-		<div id="ThreeJS" style="z-index: 1; position: absolute; left: 0px; top: 0px"></div>
-
-        <script> 
-
-		    
-		    var scene, camera;
-		    var container, stats, renderer, controls;
-		    
-		    var vertices = [];
-		    var edges = [];
-		    var faces = [];
-		    var radius = 200;
-		    
-            json =
 {
     "edges":[
         {
@@ -93,96 +62,126 @@
         },
         {
             "index":12,
-            "u":4,
-            "v":5
+            "u":0,
+            "v":7
         },
         {
             "index":13,
-            "u":7,
-            "v":1
+            "u":4,
+            "v":7
         },
         {
             "index":14,
-            "u":7,
-            "v":5
+            "u":8,
+            "v":1
         },
         {
             "index":15,
-            "u":3,
-            "v":8
+            "u":8,
+            "v":5
         },
         {
             "index":16,
-            "u":4,
-            "v":8
+            "u":0,
+            "v":9
         },
         {
             "index":17,
-            "u":7,
-            "v":6
+            "u":9,
+            "v":5
         },
         {
             "index":18,
             "u":3,
-            "v":9
+            "v":10
         },
         {
             "index":19,
-            "u":9,
-            "v":6
+            "u":4,
+            "v":10
         },
         {
             "index":20,
-            "u":10,
-            "v":4
+            "u":8,
+            "v":6
         },
         {
             "index":21,
-            "u":10,
-            "v":5
-        },
-        {
-            "index":22,
-            "u":7,
+            "u":3,
             "v":11
         },
         {
-            "index":23,
+            "index":22,
             "u":11,
-            "v":5
+            "v":6
+        },
+        {
+            "index":23,
+            "u":12,
+            "v":4
         },
         {
             "index":24,
-            "u":10,
-            "v":8
+            "u":12,
+            "v":7
         },
         {
             "index":25,
             "u":9,
-            "v":8
+            "v":7
         },
         {
             "index":26,
-            "u":7,
+            "u":8,
             "v":9
         },
         {
             "index":27,
-            "u":10,
-            "v":11
+            "u":12,
+            "v":10
         },
         {
             "index":28,
-            "u":7,
-            "v":8
+            "u":11,
+            "v":10
         },
         {
             "index":29,
+            "u":8,
+            "v":11
+        },
+        {
+            "index":30,
+            "u":12,
+            "v":9
+        },
+        {
+            "index":31,
+            "u":8,
+            "v":13
+        },
+        {
+            "index":32,
+            "u":9,
+            "v":13
+        },
+        {
+            "index":33,
+            "u":12,
+            "v":11
+        },
+        {
+            "index":34,
             "u":11,
-            "v":8
+            "v":13
+        },
+        {
+            "index":35,
+            "u":12,
+            "v":13
         }
     ],
-    "radius":382.487113,
+    "radius":350.0,
     "status":"good",
     "triangles":[
         {
@@ -230,185 +229,214 @@
         {
             "a":0,
             "b":4,
-            "c":5,
+            "c":7,
             "index":6,
             "orientation":1
         },
         {
-            "a":7,
+            "a":8,
             "b":1,
             "c":5,
             "index":7,
             "orientation":1
         },
         {
-            "a":3,
-            "b":4,
-            "c":8,
+            "a":0,
+            "b":9,
+            "c":5,
             "index":8,
-            "orientation":-1
+            "orientation":1
         },
         {
-            "a":7,
-            "b":1,
-            "c":6,
+            "a":3,
+            "b":4,
+            "c":10,
             "index":9,
             "orientation":-1
         },
         {
-            "a":3,
-            "b":9,
+            "a":8,
+            "b":1,
             "c":6,
             "index":10,
             "orientation":-1
         },
         {
-            "a":10,
-            "b":4,
-            "c":5,
+            "a":3,
+            "b":11,
+            "c":6,
             "index":11,
             "orientation":-1
         },
         {
-            "a":7,
-            "b":11,
-            "c":5,
+            "a":12,
+            "b":4,
+            "c":7,
             "index":12,
             "orientation":-1
         },
         {
-            "a":10,
-            "b":4,
-            "c":8,
+            "a":0,
+            "b":9,
+            "c":7,
             "index":13,
-            "orientation":1
+            "orientation":-1
         },
         {
-            "a":3,
+            "a":8,
             "b":9,
-            "c":8,
+            "c":5,
             "index":14,
-            "orientation":1
+            "orientation":-1
         },
         {
-            "a":7,
-            "b":9,
-            "c":6,
+            "a":12,
+            "b":4,
+            "c":10,
             "index":15,
             "orientation":1
         },
         {
-            "a":10,
+            "a":3,
             "b":11,
-            "c":5,
+            "c":10,
             "index":16,
             "orientation":1
         },
         {
-            "a":7,
+            "a":8,
             "b":11,
-            "c":8,
+            "c":6,
             "index":17,
             "orientation":1
         },
         {
-            "a":10,
-            "b":11,
-            "c":8,
+            "a":12,
+            "b":9,
+            "c":7,
             "index":18,
+            "orientation":1
+        },
+        {
+            "a":8,
+            "b":9,
+            "c":13,
+            "index":19,
+            "orientation":1
+        },
+        {
+            "a":12,
+            "b":11,
+            "c":10,
+            "index":20,
             "orientation":-1
         },
         {
-            "a":7,
-            "b":9,
-            "c":8,
-            "index":19,
+            "a":8,
+            "b":11,
+            "c":13,
+            "index":21,
             "orientation":-1
+        },
+        {
+            "a":12,
+            "b":9,
+            "c":13,
+            "index":22,
+            "orientation":-1
+        },
+        {
+            "a":12,
+            "b":11,
+            "c":13,
+            "index":23,
+            "orientation":1
         }
     ],
     "vertices":[
         {
-            "index":8,
-            "x":-190.167754,
-            "y":-70.717317,
-            "z":-324.240155
-        },
-        {
-            "index":9,
-            "x":7.470667,
-            "y":106.83551,
-            "z":-367.187629
-        },
-        {
-            "index":10,
-            "x":-0.0,
-            "y":-329.527359,
-            "z":194.185765
-        },
-        {
-            "index":11,
-            "x":-22.986667,
-            "y":-328.724647,
-            "z":-194.185765
-        },
-        {
-            "index":1,
-            "x":162.361912,
-            "y":251.07811,
-            "z":238.526275
-        },
-        {
-            "index":2,
-            "x":-162.361912,
-            "y":251.07811,
-            "z":238.526275
-        },
-        {
-            "index":3,
-            "x":-144.452082,
-            "y":261.792291,
-            "z":-238.526275
-        },
-        {
-            "index":4,
-            "x":-184.771524,
-            "y":-83.810486,
-            "z":324.240155
-        },
-        {
-            "index":5,
-            "x":184.771524,
-            "y":-83.810486,
-            "z":324.240155
-        },
-        {
             "index":6,
-            "x":179.48073,
-            "y":239.140702,
-            "z":-238.526275
+            "x":-150.769231,
+            "y":261.139968,
+            "z":177.692308
         },
         {
             "index":7,
-            "x":178.475106,
-            "y":-96.495338,
-            "z":-324.240155
+            "x":173.607763,
+            "y":-233.856075,
+            "z":-194.091939
+        },
+        {
+            "index":8,
+            "x":150.769231,
+            "y":261.139968,
+            "z":177.692308
+        },
+        {
+            "index":9,
+            "x":311.173242,
+            "y":30.438291,
+            "z":-157.304558
+        },
+        {
+            "index":10,
+            "x":-287.986566,
+            "y":43.497782,
+            "z":-194.091939
+        },
+        {
+            "index":12,
+            "x":29.235922,
+            "y":48.656745,
+            "z":-345.366156
+        },
+        {
+            "index":13,
+            "x":165.052787,
+            "y":274.693964,
+            "z":-140.715328
         },
         {
             "index":0,
+            "x":150.769231,
+            "y":-261.139968,
+            "z":177.692308
+        },
+        {
+            "index":1,
             "x":0.0,
-            "y":107.096392,
-            "z":367.187629
+            "y":0.0,
+            "z":350.0
+        },
+        {
+            "index":2,
+            "x":-150.769231,
+            "y":-261.139968,
+            "z":177.692308
+        },
+        {
+            "index":3,
+            "x":-301.538462,
+            "y":-0.0,
+            "z":177.692308
+        },
+        {
+            "index":4,
+            "x":-142.418323,
+            "y":-237.02389,
+            "z":-214.561639
+        },
+        {
+            "index":5,
+            "x":301.538462,
+            "y":-0.0,
+            "z":177.692308
+        },
+        {
+            "index":11,
+            "x":-119.21157,
+            "y":289.039578,
+            "z":-157.304558
         }
     ]
 }
-;
-            
-            populate();		    
-            init();
-            generateSphere(vertices, edges, radius);
-            animate();
-
-
-        </script>
-	</body>
-</html>

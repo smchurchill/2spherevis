@@ -7,3 +7,4 @@ Plans for the site include:
   - User interface to upload custom 2-spheres
   - Metadata visualization when a 2-sphere is the link of a vertex (3-manifold) or edge (4-manifold)
   
+See the [sourceforge fork](https://sourceforge.net/u/smchurchill/regina/ci/webvis/tree/) for details on how the backend sphere-processing works.

@@ -1,7 +1,7 @@
 # 2spherevis
-There are currently 3 live example pages at 2spherevis.com: /l83, /csknot, and /s2s1.  They are the links of the first vertex in the Regina examples triangulations L(8,3), & S2xS1, and the link of the only edge in the Regina example triangulation of a Cappel-Shaneson knot complement
+Site is no longer live.
 
-The site is currently hosted on a DreamHost VPS but migration to DreamCompute platform is in-progress.
+Visualisations of the links of the first vertex in the Regina examples triangulations L(8,3), & S2xS1 and the link of the only edge in the Regina example triangulation of a Cappel-Shaneson knot complement can be found in their respective directories.
 
 Plans for the site include:
   - User interface to upload custom 2-spheres
